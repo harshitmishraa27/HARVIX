@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HARVIX - Online Shopping</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            HAR<span>VIX</span>
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Categories</a>
+            <a href="#">Deals</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <input
+    type="text"
+    id="search-input"
+    placeholder="Search products..."
+    onkeyup="searchProducts()"
+>
+    <button onclick="searchProducts()">🔍</button>
+            <button onclick="showCart()">
+    🛒 <span id="cart-count">0</span>
+</button>
+            <button>👤</button>
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO HARVIX</p>
+
+            <h1>
+                Shop Smart.<br>
+                Live Better.
+            </h1>
+
+            <p>
+                Discover the latest products, amazing deals,
+                and everything you need in one place.
+            </p>
+
+            <button class="shop-btn">
+                Shop Now →
+            </button>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+
+        <div class="section-title">
+            <p>SHOP BY CATEGORY</p>
+            <h2>Explore Our Categories</h2>
+        </div>
+
+        <div class="category-container">
+
+            <div class="category-card" onclick="filterCategory('Fashion')">
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+                <p>120+ Products</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('Electronics')">
+                <div class="category-icon">💻</div>
+                <h3>Electronics</h3>
+                <p>85+ Products</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('Accessories')">
+                <div class="category-icon">⌚</div>
+                <h3>Accessories</h3>
+                <p>65+ Products</p>
+            </div>
+
+            <div class="category-card" onclick="filterCategory('Home & Living')">
+                <div class="category-icon">🏠</div>
+                <h3>Home & Living</h3>
+                <p>90+ Products</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="products">
+        <div class="price-filter">
+
+    <label for="price-range">
+        Maximum Price:
+    </label>
+
+    <select id="price-range" onchange="filterPrice()">
+        <option value="all">All Prices</option>
+        <option value="1500">Under ₹1,500</option>
+        <option value="2000">Under ₹2,000</option>
+        <option value="3000">Under ₹3,000</option>
+    </select>
+
+</div>
+
+        <div class="section-title">
+            <p>OUR COLLECTION</p>
+            <h2>Featured Products</h2>
+        </div>
+
+        <div class="product-container">
+
+            <div class="product-card">
+
+                <div class="product-image">👟</div>
+
+                <div class="product-info">
+
+                    <p class="product-category">Footwear</p>
+
+                    <h3>Urban Running Shoes</h3>
+
+                    <div class="rating">★★★★★</div>
+
+                    <div class="price">
+                        ₹2,499
+                        <span>₹3,499</span>
+                    </div>
+
+                    <button class="cart-btn"
+    onclick="addToCart('Urban Running Shoes', 2499)">
+    Add to Cart
+</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">⌚</div>
+
+                <div class="product-info">
+
+                    <p class="product-category">Accessories</p>
+
+                    <h3>Smart Watch Pro</h3>
+
+                    <div class="rating">★★★★★</div>
+
+                    <div class="price">
+                        ₹1,999
+                        <span>₹2,799</span>
+                    </div>
+
+                    <button class="cart-btn"
+    onclick="addToCart('Smart Watch Pro', 1999)">
+    Add to Cart
+</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">🎧</div>
+
+                <div class="product-info">
+
+                    <p class="product-category">Electronics</p>
+
+                    <h3>Wireless Headphones</h3>
+
+                    <div class="rating">★★★★☆</div>
+
+                    <div class="price">
+                        ₹1,499
+                        <span>₹2,199</span>
+                    </div>
+
+                    <button class="cart-btn"
+    onclick="addToCart('Wireless Headphone', 1499)">
+    Add to Cart
+</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">🎒</div>
+
+                <div class="product-info">
+
+                    <p class="product-category">Fashion</p>
+
+                    <h3>Premium Travel Backpack</h3>
+
+                    <div class="rating">★★★★★</div>
+
+                    <div class="price">
+                        ₹1,299
+                        <span>₹1,899</span>
+                    </div>
+
+                    <button class="cart-btn"
+    onclick="addToCart('Premium Travel Backpack', 1299)">
+    Add to Cart
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- PRODUCT DETAILS PAGE -->
+
+<section id="product-details-page" class="product-details-page">
+
+    <div class="product-details-container">
+
+        <div class="product-details-image">
+            <span id="details-icon">👟</span>
+        </div>
+
+        <div class="product-details-content">
+
+            <p id="details-category" class="product-category">
+                Footwear
+            </p>
+
+            <h1 id="details-name">
+                Urban Running Shoes
+            </h1>
+
+            <div id="details-rating" class="rating">
+                ★★★★★
+            </div>
+
+            <div id="details-price" class="price">
+                ₹2,499
+            </div>
+
+            <p id="details-description">
+                Comfortable and stylish running shoes
+                designed for everyday use and active lifestyles.
+            </p>
+
+            <button id="details-cart-btn" class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+    <!-- SPECIAL OFFER -->
+    <section class="offer">
+
+        <div class="offer-content">
+
+            <p class="offer-tag">
+                LIMITED TIME OFFER
+            </p>
+
+            <h2>
+                Get Up To <span>50% OFF</span>
+            </h2>
+
+            <p>
+                Grab your favorite products before the offer ends.
+                Don't miss today's exclusive deals.
+            </p>
+
+            <button class="offer-btn">
+                Shop Deals →
+            </button>
+
+        </div>
+
+
+        <div class="offer-box">
+
+            <div class="discount">
+                50%
+            </div>
+
+            <p>OFF</p>
+
+        </div>
+
+    </section>
+    <!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <div>
+        <p class="newsletter-tag">STAY UPDATED</p>
+
+        <h2>Get the latest deals in your inbox</h2>
+
+        <p>
+            Subscribe to receive new products and exclusive offers.
+        </p>
+    </div>
+
+    <form class="subscribe-form">
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <button type="submit">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-about">
+
+            <div class="footer-logo">
+                HAR<span>VIX</span>
+            </div>
+
+            <p>
+                Discover quality products, great prices,
+                and a better way to shop online.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h3>Shop</h3>
+
+            <a href="#">All Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Deals</a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h3>Company</h3>
+
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h3>Follow Us</h3>
+
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>© 2026 HARVIX. All rights reserved.</p>
+
+    </div>
+
+</footer>
+<!-- CART MODAL -->
+
+<div id="cart-modal" class="cart-modal">
+
+    <div class="cart-box">
+
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+
+            <button onclick="closeCart()">✕</button>
+        </div>
+
+        <div id="cart-items"></div>
+
+        <div class="cart-total">
+            <strong>Total:</strong>
+            <span id="cart-total">₹0</span>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
+<!-- CHECKOUT PAGE -->
+<section id="checkout-page" class="checkout-page">
+
+    <div class="checkout-container">
+
+        <div class="checkout-left">
+            <h2>Checkout</h2>
+            <p>Complete your details to place your order.</p>
+
+            <form id="checkout-form">
+
+                <input type="text" id="name" placeholder="Full Name" required>
+
+                <input type="email" id="email" placeholder="Email Address" required>
+
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                <textarea id="address" placeholder="Full Address" required></textarea>
+
+                <div class="checkout-row">
+                    <input type="text" id="city" placeholder="City" required>
+
+                    <input type="text" id="pincode" placeholder="Pincode" required>
+                </div>
+
+                <button type="submit" class="place-order-btn">
+                    Place Order
+                </button>
+
+            </form>
+        </div>
+
+        <div class="checkout-right">
+            <h2>Order Summary</h2>
+
+            <div id="checkout-items"></div>
+
+            <div class="checkout-total">
+                <strong>Total</strong>
+                <strong id="checkout-total">₹0</strong>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- ORDER SUCCESS -->
+<section class="success-page">
+
+    <div class="success-box">
+
+        <div class="success-icon">✓</div>
+
+        <h1>Order Placed Successfully!</h1>
+
+        <p>
+            Thank you for shopping with HARVIX.
+            Your order has been received successfully.
+        </p>
+
+        <button onclick="goHome()" class="shop-btn">
+            Continue Shopping →
+        </button>
+
+    </div>
+
+</section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
